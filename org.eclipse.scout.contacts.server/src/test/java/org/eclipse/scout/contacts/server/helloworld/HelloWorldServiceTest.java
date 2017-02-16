@@ -31,4 +31,9 @@ public class HelloWorldServiceTest {
 		Assert.assertNotNull(input.getMessage());
 		Assert.assertEquals("Hello " + SUBJECT_NAME + "!", input.getMessage().getValue());
 	}
+	
+	@Test
+	public void doNothing(){
+		
+	}
 }
