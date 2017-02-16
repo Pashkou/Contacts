@@ -2,6 +2,7 @@ package org.eclipse.scout.contacts.client.contact;
 
 import java.util.List;
 
+import org.eclipse.scout.contacts.client.organization.OrganizationTablePage;
 import org.eclipse.scout.contacts.client.person.PersonTablePage;
 import org.eclipse.scout.contacts.shared.Icons;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
@@ -20,6 +21,7 @@ public class ContactOutline extends AbstractOutline {
 	@Override
 	protected void execCreateChildPages(List<IPage<?>> pageList) {
 		 pageList.add(new PersonTablePage());
+		 pageList.add(new OrganizationTablePage());
 	}
 
 	@Override
