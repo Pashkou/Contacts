@@ -8,6 +8,7 @@ public class DefaultIconProviderServiceTest {
 
 	@Test
 	public void test() {
+
 	}
 
 }

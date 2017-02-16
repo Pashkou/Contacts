@@ -8,6 +8,7 @@ public class ClientSessionTest {
 
 	@Test
 	public void test() {
+		System.out.println("just an empty test");
 	}
 
 }
