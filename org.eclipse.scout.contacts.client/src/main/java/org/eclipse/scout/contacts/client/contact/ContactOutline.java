@@ -1,36 +1,32 @@
-package org.eclipse.scout.contacts.client.work;
+package org.eclipse.scout.contacts.client.contact;
 
 import java.util.List;
 
-import org.eclipse.scout.rt.platform.Order;
+import org.eclipse.scout.contacts.shared.Icons;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
+import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-import org.eclipse.scout.contacts.client.helloworld.HelloWorldPage;
-import org.eclipse.scout.contacts.shared.Icons;
-
 /**
- * <h3>{@link WorkOutline}</h3>
+ * <h3>{@link ContactOutline}</h3>
  *
  * @author Sergei
  */
 @Order(1000)
-public class WorkOutline extends AbstractOutline {
+public class ContactOutline extends AbstractOutline {
 
 	@Override
 	protected void execCreateChildPages(List<IPage<?>> pageList) {
-		super.execCreateChildPages(pageList);
-		pageList.add(new HelloWorldPage());
 	}
 
 	@Override
 	protected String getConfiguredTitle() {
-		return TEXTS.get("Work");
+		return TEXTS.get("Contacts");
 	}
 
 	@Override
 	protected String getConfiguredIconId() {
-		return Icons.Pencil;
+		return Icons.Category;
 	}
 }
