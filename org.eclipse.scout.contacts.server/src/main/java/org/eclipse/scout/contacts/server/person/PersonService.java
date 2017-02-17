@@ -9,6 +9,7 @@ import org.eclipse.scout.contacts.shared.person.ReadPersonPermission;
 import org.eclipse.scout.contacts.shared.person.UpdatePersonPermission;
 import org.eclipse.scout.rt.platform.exception.VetoException;
 import org.eclipse.scout.rt.platform.holders.NVPair;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.server.jdbc.SQL;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
@@ -40,8 +41,13 @@ public class PersonService implements IPersonService {
 		if (!ACCESS.check(new CreatePersonPermission())) {
 			throw new VetoException(TEXTS.get("AuthorizationFailed"));
 		}
-		// TODO [Sergei] add business logic here.
-		return formData;
+		 // add a unique person id if necessary
+	    if (StringUtility.isNullOrEmpty(formData.getPersonId())) {
+	      formData.setPersonId(java.util.UUID.randomUUID().toString());
+	    }
+
+	    SQL.insert(SQLs.PERSON_INSERT, formData); 
+	    return formData;
 	}
 
 	@Override
@@ -49,7 +55,7 @@ public class PersonService implements IPersonService {
 		if (!ACCESS.check(new ReadPersonPermission())) {
 			throw new VetoException(TEXTS.get("AuthorizationFailed"));
 		}
-		// TODO [Sergei] add business logic here.
+		SQL.selectInto(SQLs.PERSON_SELECT, formData); 
 		return formData;
 	}
 
@@ -58,7 +64,7 @@ public class PersonService implements IPersonService {
 		if (!ACCESS.check(new UpdatePersonPermission())) {
 			throw new VetoException(TEXTS.get("AuthorizationFailed"));
 		}
-		// TODO [Sergei] add business logic here.
+		 SQL.update(SQLs.PERSON_UPDATE, formData);
 		return formData;
 	}
 }
