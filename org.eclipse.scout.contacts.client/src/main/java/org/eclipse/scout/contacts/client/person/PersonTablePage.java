@@ -35,7 +35,6 @@ public class PersonTablePage extends AbstractPageWithTable<Table> {
 
 	public class Table extends AbstractTable {
 
-
 		public PersonIdColumn getPersonIdColumn() {
 			return getColumnSet().getColumnByClass(PersonIdColumn.class);
 		}
@@ -68,7 +67,10 @@ public class PersonTablePage extends AbstractPageWithTable<Table> {
 			return getColumnSet().getColumnByClass(EmailColumn.class);
 		}
 
-
+		public OrganizationColumn getOrganizationColumn() {
+			return getColumnSet().getColumnByClass(OrganizationColumn.class);
+		}
+		
 		@Order(1)
 		public class PersonIdColumn extends AbstractStringColumn {
 			@Override
@@ -208,6 +210,25 @@ public class PersonTablePage extends AbstractPageWithTable<Table> {
 				return 120;
 			}
 		}
+
+		@Order(9)
+		public class OrganizationColumn extends AbstractStringColumn {
+			@Override
+			protected String getConfiguredHeaderText() {
+				return TEXTS.get("Organization");
+			}
+
+			@Override 
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
+			
+			@Override
+			protected int getConfiguredWidth() {
+				return 120;
+			}
+		}
+		
 		
 		
 	}
