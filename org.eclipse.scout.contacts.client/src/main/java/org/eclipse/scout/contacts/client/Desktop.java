@@ -3,6 +3,7 @@ package org.eclipse.scout.contacts.client;
 import java.util.List;
 
 import org.eclipse.scout.contacts.client.contact.ContactOutline;
+import org.eclipse.scout.contacts.client.person.PersonForm;
 import org.eclipse.scout.contacts.client.search.SearchOutline;
 import org.eclipse.scout.contacts.shared.Icons;
 import org.eclipse.scout.rt.client.ui.action.keystroke.IKeyStroke;
@@ -59,29 +60,43 @@ public class Desktop extends AbstractDesktop {
 		protected String getConfiguredText() {
 			return TEXTS.get("QuickAccess");
 		}
-		
+
+		@Order(10)
+		public class NewPersonMenu extends AbstractMenu {
+
+			@Override
+			protected String getConfiguredText() {
+				return TEXTS.get("NewPersonMenu");
+			}
+
+			@Override
+			protected void execAction() {
+				new PersonForm().startNew();
+			}
+		}
+
 	}
 
 	@Order(2000)
 	public class OptionsMenu extends AbstractBookmarkMenu {
-		
-		@Override
-	    protected String getConfiguredText() {
-	      return TEXTS.get("Options");
-	    }
 
-	    @Override
-	    protected String getConfiguredIconId() {
-	      return AbstractIcons.Gear;
-	    }
+		@Override
+		protected String getConfiguredText() {
+			return TEXTS.get("Options");
+		}
+
+		@Override
+		protected String getConfiguredIconId() {
+			return AbstractIcons.Gear;
+		}
 	}
 
 	@Order(3000)
 	public class UserMenu extends AbstractMenu {
 		@Override
-	    protected String getConfiguredIconId() {
-	      return AbstractIcons.Person;
-	    }
+		protected String getConfiguredIconId() {
+			return AbstractIcons.Person;
+		}
 	}
 
 	@Order(1000)
