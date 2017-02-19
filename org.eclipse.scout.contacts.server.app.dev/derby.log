@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Feb 17 14:28:00 CET 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-015a-4c42-0855-000005c17408 
+Sun Feb 19 09:51:18 CET 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-015a-5591-6f17-000005ad2338 
 on database directory memory:C:\Users\Sergei\Contacts\org.eclipse.scout.contacts.server.app.dev\contacts-database with class loader sun.misc.Launcher$AppClassLoader@7d4991ad 
 Loaded from file:/C:/Users/Sergei/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
 java.vendor=Oracle Corporation

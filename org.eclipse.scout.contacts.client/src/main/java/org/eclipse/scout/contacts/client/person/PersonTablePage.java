@@ -169,6 +169,11 @@ public class PersonTablePage extends AbstractPageWithTable<Table> {
 			}
 
 			@Override
+			protected boolean getConfiguredVisible() {
+				return false;
+			}
+			
+			@Override
 			protected int getConfiguredWidth() {
 				return 120;
 			}
@@ -287,6 +292,12 @@ public class PersonTablePage extends AbstractPageWithTable<Table> {
 			@Override
 			protected int getConfiguredWidth() {
 				return 100;
+			}
+			
+			
+			@Override
+			protected boolean getConfiguredDisplayable() {
+				return false;
 			}
 		}
 
