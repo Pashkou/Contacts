@@ -6,12 +6,18 @@ public enum StatesFSMImpl implements StateOfFSM {
 		@Override
 		public void coin(FiniteStateMashine fsm) {
 			fsm.unlock();	
-			fsm.setStateOfFsm(StatesFSMImpl.unlock);
+			fsm.setStateOfFsm(StatesFSMImpl.UNLOCKED);
 		}
 
 		@Override
 		public void pass(FiniteStateMashine fsm) {
-			fsm.alarm();
+			fsm.alarmOn();
+			fsm.setStateOfFsm(StatesFSMImpl.ALARMED);
+		}
+
+		@Override
+		public void reset(FiniteStateMashine fsm) {
+			fsm.alarmOff();
 		}
 	},
 	
@@ -25,7 +31,35 @@ public enum StatesFSMImpl implements StateOfFSM {
 		@Override
 		public void pass(FiniteStateMashine fsm) {
 			fsm.lock();
-			fsm.setStateOfFsm(StatesFSMImpl.lock);
+			fsm.setStateOfFsm(StatesFSMImpl.LOCKED);
+		}
+
+		@Override
+		public void reset(FiniteStateMashine fsm) {
+			fsm.lock();
+			fsm.alarmOff();
+			fsm.setStateOfFsm(StatesFSMImpl.LOCKED);
+		}
+		
+	},
+	
+	ALARMED{
+
+		@Override
+		public void coin(FiniteStateMashine fsm) {
+			fsm.reset();
+			fsm.setStateOfFsm(StatesFSMImpl.LOCKED);
+		}
+
+		@Override
+		public void pass(FiniteStateMashine fsm) {
+		}
+
+		@Override
+		public void reset(FiniteStateMashine fsm) {
+			fsm.lock();
+			fsm.alarmOff();
+			fsm.setStateOfFsm(StatesFSMImpl.LOCKED);
 		}
 		
 	}

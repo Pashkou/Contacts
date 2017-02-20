@@ -12,7 +12,7 @@ public class FiniteStateMashineTest extends FiniteStateMashine {
 	@Before
 	public void setup(){
 		finiteStateMashine = this;
-		finiteStateMashine.setStateOfFsm(StatesFSMImpl.lock);
+		finiteStateMashine.setStateOfFsm(StatesFSMImpl.LOCKED);
 		actions = "";
 	} 
 	
@@ -38,6 +38,13 @@ public class FiniteStateMashineTest extends FiniteStateMashine {
 		assertEquals("UTTTTL", actions);
 	}
 
+	@Test
+	public void giveCoin_swichOffAlarm(){
+		finiteStateMashine.pass();
+		finiteStateMashine.coin();
+		
+		assertEquals("NR", actions);
+	}
 	
 	
 	@Override
@@ -56,8 +63,18 @@ public class FiniteStateMashineTest extends FiniteStateMashine {
 	}
 
 	@Override
-	protected void alarm() {
-		actions += "A";
+	protected void alarmOn() {
+		actions += "N";
+	}
+
+	@Override
+	protected void alarmOff() {
+		actions += "F";
+	}
+
+	@Override
+	protected void reset() {
+		actions += "R";
 	}
 
 }

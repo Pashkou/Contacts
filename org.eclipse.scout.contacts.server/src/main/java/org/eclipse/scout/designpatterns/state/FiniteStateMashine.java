@@ -18,7 +18,7 @@ public abstract class FiniteStateMashine {
 	protected abstract void lock();
 	protected abstract void unlock();
 	protected abstract void thankyou();
-	protected abstract void alarm();
-
-
+	protected abstract void alarmOn();
+	protected abstract void alarmOff();
+	protected abstract void reset();
 }
